@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Son Mektup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-image: url('arkaplan5.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow-x: hidden;
+    }
+
+    .ortali-kutu {
+      background: rgba(255, 182, 193, 0.7);
+      border: 2px solid #c71585;
+      border-radius: 20px;
+      max-width: 90%;
+      padding: 20px;
+      margin: 20vh auto;
+      text-align: center;
+      color: #000;
+    }
+
+    .mektup-buton {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      padding: 15px;
+      border-radius: 30px;
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .son-yazi {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid #c71585;
+      max-width: 90%;
+      font-size: 18px;
+      text-align: center;
+      z-index: 99;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ortali-kutu">
+    <p><!-- Buraya son paragrafını yazabilirsin --></p>
+  </div>
+
+  <button class="mektup-buton" onclick="gosterYazi()">✉</button>
+
+  <div class="son-yazi" id="yaziKutusu">
+    <!-- Bu yazı butona tıklanınca gösterilecek -->
+  </div>
+
+  <audio autoplay loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function gosterYazi() {
+      document.getElementById("yaziKutusu").style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

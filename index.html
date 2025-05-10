@@ -3,26 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seninle Başlayan Güzel Günlere</title>
+  <title>Seninle Başlayan...</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-image: url('arkaplan1.jpg');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
     }
+
     .ortali-kutu {
       background: rgba(255, 182, 193, 0.7);
       border: 2px solid #c71585;
       border-radius: 20px;
-      max-width: 90%;
       padding: 20px;
-      margin: 20vh auto;
       text-align: center;
-      color: #000;
+      max-width: 90%;
     }
+
     button {
       background-color: #ff69b4;
       border: none;
@@ -33,9 +40,11 @@
       cursor: pointer;
       margin-top: 20px;
     }
+
     button:hover {
       background-color: #ff1493;
     }
+
     .kalp {
       font-size: 24px;
     }
@@ -44,15 +53,29 @@
 <body>
 
   <div class="ortali-kutu">
-    <p>Öncelikle merhaba</p>
-    <button onclick="window.location.href='ikinci.html'">
+    <p>Buraya ilk yazını yazabilirsin.</p>
+    <button onclick="muzikBasla()">
       <span class="kalp">♥</span>
     </button>
   </div>
 
-  <audio autoplay loop>
+  <audio id="arkaplanMuzik" loop>
     <source src="muzik.mp3" type="audio/mpeg">
   </audio>
+
+  <script>
+    function muzikBasla() {
+      const muzik = document.getElementById("arkaplanMuzik");
+      muzik.play();
+      localStorage.setItem("muzikCal", "evet");
+      window.location.href = 'ikinci.html';
+    }
+
+    // Eğer kullanıcı geri dönerse tekrar çalsın
+    if (localStorage.getItem("muzikCal") === "evet") {
+      document.getElementById("arkaplanMuzik").play().catch(() => {});
+    }
+  </script>
 
 </body>
 </html>

@@ -3,79 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Son Mektup</title>
+  <title>Son Bir Söz</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-image: url('arkaplan5.jpg');
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('arkaplan3.jpg');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      overflow-x: hidden;
+      font-family: Arial, sans-serif;
     }
 
     .ortali-kutu {
       background: rgba(255, 182, 193, 0.7);
       border: 2px solid #c71585;
       border-radius: 20px;
-      max-width: 90%;
       padding: 20px;
-      margin: 20vh auto;
       text-align: center;
-      color: #000;
+      max-width: 90%;
     }
 
     .mektup-buton {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 30px;
-      padding: 15px;
-      border-radius: 30px;
+      margin-top: 30px;
       background-color: #ff69b4;
       border: none;
-      color: white;
+      padding: 16px;
+      border-radius: 30px;
+      font-size: 28px;
       cursor: pointer;
+      color: white;
     }
 
-    .son-yazi {
+    .mektup-buton:hover {
+      background-color: #ff1493;
+    }
+
+    #yazi-kutusu {
       display: none;
-      position: fixed;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(255, 255, 255, 0.9);
+      margin-top: 20px;
+      background: white;
       padding: 20px;
       border-radius: 15px;
       border: 2px solid #c71585;
       max-width: 90%;
-      font-size: 18px;
-      text-align: center;
-      z-index: 99;
     }
   </style>
 </head>
 <body>
 
   <div class="ortali-kutu">
-    <p><!-- Buraya son paragrafını yazabilirsin --></p>
+    <p>Buraya son duygunu yazabilirsin.</p>
   </div>
 
-  <button class="mektup-buton" onclick="gosterYazi()">✉</button>
+  <button class="mektup-buton" onclick="yaziGoster()">✉</button>
 
-  <div class="son-yazi" id="yaziKutusu">
-    <!-- Bu yazı butona tıklanınca gösterilecek -->
+  <div id="yazi-kutusu">
+    <p>Yazı buraya gelecek (sen yazacaksın).</p>
   </div>
 
-  <audio autoplay loop>
+  <audio id="arkaplanMuzik" loop>
     <source src="muzik.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    function gosterYazi() {
-      document.getElementById("yaziKutusu").style.display = 'block';
+    if (localStorage.getItem("muzikCal") === "evet") {
+      document.getElementById("arkaplanMuzik").play().catch(() => {});
+    }
+
+    function yaziGoster() {
+      document.getElementById('yazi-kutusu').style.display = 'block';
     }
   </script>
 
